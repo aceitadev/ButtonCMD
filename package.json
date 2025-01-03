@@ -1,0 +1,63 @@
+{
+  "name": "buttoncmd",
+  "displayName": "ButtonCMD",
+  "description": "Button to execute a custom command in the console",
+  "version": "0.0.1",
+  "publisher": "aceitadev",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SEU_USUARIO/buttoncmd.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:buttoncmd.runCommand",
+    "onCommand:buttoncmd.setCommand"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "buttoncmd.runCommand",
+        "title": "Run Command",
+        "icon": "$(play)"
+      },
+      {
+        "command": "buttoncmd.setCommand",
+        "title": "Set Custom Command"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "buttoncmd.runCommand",
+          "when": "editorTextFocus",
+          "group": "navigation",
+          "icon": "$(play)"
+        },
+        {
+          "command": "buttoncmd.setCommand",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.16.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
